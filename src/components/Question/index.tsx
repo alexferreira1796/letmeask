@@ -8,13 +8,15 @@ type QuestionProps = {
     avatar: string;
   }
   children?: React.ReactNode // Qualquer conteúdo JSX
+  isAnswerd?: boolean;
+  isHighlighted?: boolean;
 }
 
 function Question({
-  content, author, children
+  content, author, isAnswerd = false, isHighlighted = false, children, 
 }: QuestionProps) {
   return (
-    <div className="question">
+    <div className={`question ${isAnswerd ? 'answered' : ''} ${isHighlighted && !isAnswerd ? 'highlighted' : ''}`}>
       <p>{content}</p>
       <footer>
         <div className="user_info">
